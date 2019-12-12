@@ -22,6 +22,7 @@ public class TablePanel extends JPanel {
 	private NewOrderFrame newOrderFrame;
 
 	public TablePanel() {
+
 		Dimension size = getPreferredSize();
 		size.width = 250;
 		setPreferredSize(size);
@@ -32,15 +33,18 @@ public class TablePanel extends JPanel {
 
 		floorButton.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("floor panel action perform - tbutton");
 				TableEvent tableEvent = new TableEvent(this);
 				tableListener.tableEventOccurred(tableEvent);
 			}
 		});
+
 	}
 
 	public TablePanel(int tableNum) {
+
 		this.tableNum = tableNum;
 		Dimension size = getPreferredSize();
 		size.width = 250;
@@ -52,19 +56,21 @@ public class TablePanel extends JPanel {
 
 		floorButton.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("!!floor panel action perform - tbutton");
 				TableEvent tableEvent = new TableEvent(this);
 				tableListener.tableEventOccurred(tableEvent);
 			}
 		});
-		
+
 		newOrderButton.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Tabel panel action perform - new order");
-				//NewOrderEvent newOrderEvent = new NewOrderEvent(this, tableNum);
-				//tableListener.newOrderEventOccurred(newOrderEvent);
+				// NewOrderEvent newOrderEvent = new NewOrderEvent(this, tableNum);
+				// tableListener.newOrderEventOccurred(newOrderEvent);
 				newOrderFrame = new NewOrderFrame();
 
 				newOrderFrame.setNewOrderListener(new AddItemListener() {
@@ -72,13 +78,13 @@ public class TablePanel extends JPanel {
 					@Override
 					public void addItemEventOccurred(AddItemEvent event) {
 						// TODO Auto-generated method stub
-						
+
 					}
 
 					@Override
 					public void submitOrderEventOccured(NewOrderEvent event) {
 						System.out.println("Table panel received submit order");
-						if(event.getOrder().size() < 1)
+						if (event.getOrder().size() < 1)
 							System.out.println("No item was added to order.");
 						newOrderFrame.dispose();
 						System.out.println(event.getOrder().toString());
@@ -86,13 +92,11 @@ public class TablePanel extends JPanel {
 						tableListener.submitOrderEventOccurred(event);
 					}
 
-				
-					
 				});
-				
+
 			}
 		});
-		
+
 	}
 
 	public void setTableListener(TabelPanelListener tableListener) {
@@ -106,7 +110,7 @@ public class TablePanel extends JPanel {
 
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		
+
 		// First Row//
 		gc.gridy = 0;
 

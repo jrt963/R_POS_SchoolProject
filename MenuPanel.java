@@ -24,7 +24,7 @@ public class MenuPanel extends JPanel {
 	private JButton buttons[];
 	private AddItemListener addItemListener;
 	static int btnIndex;
-	
+
 	public MenuPanel() {
 		Dimension size = getPreferredSize();
 		size.width = 250;
@@ -38,13 +38,15 @@ public class MenuPanel extends JPanel {
 		setBorder(BorderFactory.createTitledBorder("Add item"));
 
 		for (btnIndex = 0; btnIndex < buttons.length; btnIndex++) {
-			
+
 			System.out.println("test in menu panel before action listener : " + buttons[btnIndex].getText());
 			buttons[btnIndex].addActionListener(new ActionListener() {
-				
+
 				String temp = buttons[btnIndex].getText();
+
+				@Override
 				public void actionPerformed(ActionEvent e) {
-					
+
 					System.out.println("Menu panel - add item test line: item name.. " + temp);
 
 					AddItemEvent addItemEvent = new AddItemEvent(this, temp);

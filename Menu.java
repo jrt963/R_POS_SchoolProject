@@ -1,10 +1,8 @@
 package model;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**Menu class represents the list of items being sold.
  * 
@@ -15,10 +13,10 @@ import java.util.TreeSet;
  *
  */
 public class Menu {
-	
-	//default constructor
-	private Map<String, Double> entree = new HashMap <>();
-	
+
+	// default constructor
+	private Map<String, Double> entree = new HashMap<>();
+
 	public Map<String, Double> getEntree() {
 		return entree;
 	}
@@ -34,27 +32,26 @@ public class Menu {
 		entree.put("Tacos", 6.99);
 		entree.put("Quesadilla", 7.99);
 	}
-	
+
 	public void printAll() {
 		Set<Map.Entry<String, Double>> entries = entree.entrySet();
 		System.out.println(entries.toString());
 	}
-	
+
 	public double getPrice(String item) {
-			return (double) entree.get(item);
+		return entree.get(item);
 	}
-	
-	public Set<Map.Entry<String, Double>> getMenu(){
+
+	public Set<Map.Entry<String, Double>> getMenu() {
 		return entree.entrySet();
 	}
-	
+
 	public void setMenu(Set<Map.Entry<String, Double>> m) {
 		entree.clear();
 	}
-	
+
 	public boolean contains(String itemName) {
-		return entree.containsKey(itemName);		
+		return entree.containsKey(itemName);
 	}
 
-	
 }

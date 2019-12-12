@@ -1,4 +1,5 @@
 package view;
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,26 +9,24 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class FloorPanel extends JPanel {
 
 	private JButton tButton;
 	private FloorPanelListener floorListener;
-	
-	
+
 	public FloorPanel() {
 		Dimension size = getPreferredSize();
 		size.width = 250;
 		setPreferredSize(size);
-		
+
 		setBorder(BorderFactory.createTitledBorder("Floor Status"));
 		layoutComponent();
-		
-		
+
 		tButton.addActionListener(new ActionListener() {
-			
+
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("floor panel action perform - tbutton");
 				FloorEvent floorEvent;
@@ -35,14 +34,13 @@ public class FloorPanel extends JPanel {
 				floorListener.floorEventOccurred(floorEvent);
 			}
 		});
-		
+
 	}
-	
+
 	public void setFloorListener(FloorPanelListener floorListener) {
 		this.floorListener = floorListener;
 	}
-	
-	
+
 	public void layoutComponent() {
 		tButton = new JButton("Table 1 Button");
 
@@ -61,9 +59,8 @@ public class FloorPanel extends JPanel {
 		add(tButton, gc);
 
 		setSize(600, 500);
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
 
 }
